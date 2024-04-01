@@ -65,8 +65,7 @@ mv kubectl /usr/local/bin/kubectl
 
 VALIDATE $? "Kubectl installation"
 
-curl -sL "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_checksums.txt" | grep $PLATFORM | sha256sum --check
-
+curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
 tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
-
 sudo mv /tmp/eksctl /usr/local/bin
+VALIDATE $? "eksctl installation"
